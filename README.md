@@ -88,7 +88,7 @@ Deploying the app to the Google Cloud Platform (GCP) has the following additio
 - Your Google account is authorized for App Engine deployment in the `ted-merck-wall` project.
 - You have enabled the DataStore API. (`gcloud services enable datastore.googleapis.com`)
 - Billing is enabled for the `ted-merck-wall` project.
-- You have authenticated the `gcloud` CLI. (`gcloud auth login`)
+- You have authenticated the `gcloud` CLI. (`gcloud auth application-default login`)
 
 ### Deployment
 
