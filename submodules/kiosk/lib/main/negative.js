@@ -8,9 +8,9 @@ window.submitPrediction = () => {
 
   let payload = JSON.stringify({ text: predictionText })
 
-  let onPhraseSubmitted = (phrase) => {
-    console.log('Phrase submitted:')
-    console.debug(phrase)
+  let onPhraseSubmitted = (response) => {
+    console.log('Submitted successfully; response from backend:')
+    console.debug(response)
   }
 
   console.log(`Submitting payload: ${payload}`)
@@ -21,26 +21,18 @@ window.submitPrediction = () => {
       'Content-Type': 'application/json'
     },
     body: payload,
-  }).then(response => {
-    let mistakeDiv = window.document.getElementById("mistake")
-
-    if (response.ok) {
-      mistakeDiv.style = 'visibility: hidden;'
-      predictionText.value = ''
-    } else {
-      mistakeDiv.style = 'visibility: visible;'
-    }
-
-    console.debug(`Response: ${response}`)
-    console.debug(`Response headers: ${response.headers}`)
-    console.debug(`Response header: ${response.headers[0]}`)
-    console.debug(`Response body: ${response.body}`)
-    console.debug(`Response body used: ${response.bodyUsed}`)
-    console.debug(`Response type: ${response.type}`)
-    console.debug(`Response OK: ${response.ok}`)
-    console.debug(`Response status: ${response.status}`)
-    console.debug(`Response status text: ${response.statusText}`)
-    return response.json()
   })
-    .then(phrase => onPhraseSubmitted(phrase))
+    .then(response => {
+      let mistakeDiv = window.document.getElementById("mistake")
+
+      if (response.ok) {
+        mistakeDiv.style = 'visibility: hidden;'
+        predictionText.value = ''
+      } else {
+        mistakeDiv.style = 'visibility: visible;'
+        throw(`Backend responded with status ${response.status}`)
+      }
+      return response.json()
+    })
+    .then(response => onPhraseSubmitted(response))
 }
