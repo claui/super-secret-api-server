@@ -2,8 +2,6 @@ require 'json'
 
 require './lib/backend'
 
-@@negative_test_count = 0
-
 MyApp.add_route('GET', '/api/wall/v1/negative/phrases/{id}', {
   "resourcePath" => "/NegativePhrases",
   "summary" => "Returns the negative phrase with the given ID",
@@ -27,9 +25,7 @@ MyApp.add_route('GET', '/api/wall/v1/negative/phrases/{id}', {
     error(400)
   end
 
-  phrase = Backend::PHRASES[@@negative_test_count][:negative].find do |phrase|
-    id_int == phrase.id
-  end
+  phrase = Backend::Phrases.get_by_id(:negative, id_int)
 
   if phrase.nil?
     error(404)
@@ -37,7 +33,6 @@ MyApp.add_route('GET', '/api/wall/v1/negative/phrases/{id}', {
     phrase.to_json
   end
 end
-
 
 MyApp.add_route('GET', '/api/wall/v1/negative/phrases', {
   "resourcePath" => "/NegativePhrases",
@@ -50,7 +45,12 @@ MyApp.add_route('GET', '/api/wall/v1/negative/phrases', {
     ]}) do
   cross_origin
 
-  phrases = Backend::PHRASES[@@negative_test_count][:negative]
-  @@negative_test_count += 1 if @@negative_test_count < Backend::PHRASES.size - 1
-  phrases.to_json
+  phrases = Backend::Phrases.get(:negative)
+
+  if phrases.nil?
+    error(404)
+  else
+    content_type 'application/json'
+    phrases.to_json
+  end
 end
