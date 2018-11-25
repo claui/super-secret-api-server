@@ -134,11 +134,15 @@ export default class PhraseEngine {
   }
 
   randomPhrase () {
-    let userPhrases = this.phrases
-      .filter(phrase => phrase.expires && phrase.expires > 0)
+    let userPhrasesNotInUse = this.phrases
+      .filter(phrase => {
+        return phrase.expires &&
+          phrase.expires > 0 &&
+          !window.document.getElementById(`phrase_${phrase.id}`)
+      })
 
-    let eligiblePhrases = userPhrases.length > 0 ?
-      userPhrases : this.phrases
+    let eligiblePhrases = userPhrasesNotInUse.length > 0 ?
+      userPhrasesNotInUse : this.phrases
 
     let randomIndex =
       Math.floor(eligiblePhrases.length * Math.random())
