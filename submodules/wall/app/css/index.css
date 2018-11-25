@@ -1,0 +1,62 @@
+body {
+  background-color: #000000;
+  color: white;
+  font-size: 5.88vh;
+  font-family: 'Futura Std', 'Futura', sans-serif;
+  letter-spacing: 5px;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.container {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  transform: translateY(0px);
+}
+
+.bar {
+  width: 16.66vw;
+  height: 100vh;
+}
+
+.happy .bar {
+  mix-blend-mode: hard-light;
+}
+
+.sad .bar {
+  background: #121219;
+  mix-blend-mode: screen;
+}
+
+.bar1 {
+  background: #FF7BFF;
+  float: left;
+}
+
+.bar2 {
+  background: #8CFE92;
+  float: right;
+}
+
+.bar3 {
+  background: #958DFF;
+  float: left;
+}
+
+.bar4 {
+  background: #FFFC92;
+  float: right;
+}
+
+.bar5 {
+  background: #FF78AF;
+  float: left;
+}
+
+.bar6 {
+  background: #85FCFF;
+  float: right;
+}
