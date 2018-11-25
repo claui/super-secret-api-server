@@ -134,7 +134,13 @@ export default class PhraseEngine {
   }
 
   randomPhrase () {
-    let randomIndex = Math.floor(this.phrases.length * Math.random())
-    return this.phrases[randomIndex]
+    let userPhrases = this.phrases
+      .filter(phrase => phrase.expires && phrase.expires > 0)
+
+    let eligiblePhrases = userPhrases.length > 0 ?
+      userPhrases : this.phrases
+
+    let randomIndex = Math.floor(eligiblePhrases * Math.random())
+    return eligiblePhrases[randomIndex]
   }
 }
