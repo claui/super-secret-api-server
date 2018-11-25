@@ -105,24 +105,59 @@ gcloud app logs tail -s default --project='ted-merck-wall'
 ```
 
 
+## Browser URLs
+
+- https://ted-merck-wall.appspot.com/wall/negative/
+
+- https://ted-merck-wall.appspot.com/wall/positive/
+
+- https://ted-merck-wall.appspot.com/kiosk/negative/
+
+- https://ted-merck-wall.appspot.com/kiosk/positive/
+
+
+
 # Maintenance
 
 ## Generating server stubs from scratch
 
 Regenerating the server stubs is usually not necessary.
 
-If you still want to do it, the following Bash snippet generates the stubs:
+If you still want to do it, the following Bash snippet generates the stubs.
+
+Wall:
 
 ```
 (
   set -ex
 
   yarn install
-  trash build/server || true
+  yarn trash build/server
 
   yarn openapi-generator generate \
     -g ruby-sinatra \
     -i src/openapi/wall.json \
+    -o build/server
+
+  cd build/server
+
+  bundle config --local allow_offline_install true
+  bundle config --local path vendor/bundle
+)
+```
+
+Kiosk:
+
+```
+(
+  set -ex
+
+  yarn install
+  yarn trash build/server
+
+  yarn openapi-generator generate \
+    -g ruby-sinatra \
+    -i src/openapi/kiosk.json \
     -o build/server
 
   cd build/server
