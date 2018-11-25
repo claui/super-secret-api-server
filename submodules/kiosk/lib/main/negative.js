@@ -2,7 +2,6 @@ let URL = 'http://localhost:5101/api/kiosk/v1/negative/phrases'
 
 window.submitPrediction = () => {
   let inputElement = window.document.forms[0].elements.prediction
-
   let predictionText = inputElement.value
   console.log(`Prediction entered: ${predictionText}`)
 
@@ -27,7 +26,9 @@ window.submitPrediction = () => {
 
       if (response.ok) {
         mistakeDiv.style = 'visibility: hidden;'
-        predictionText.value = ''
+        let inputElement =
+          window.document.forms[0].elements.prediction
+        inputElement.value = ''
       } else {
         mistakeDiv.style = 'visibility: visible;'
         throw(`Backend responded with status ${response.status}`)
