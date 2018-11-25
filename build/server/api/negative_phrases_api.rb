@@ -2,8 +2,6 @@ require 'json'
 
 require './lib/backend'
 
-MAX_SUBMISSION_LENGTH = 25
-
 MyApp.add_route('POST', '/api/kiosk/v1/negative/phrases', {
   "resourcePath" => "/NegativePhrases",
   "summary" => "Creates a negative phrase",
@@ -19,7 +17,7 @@ MyApp.add_route('POST', '/api/kiosk/v1/negative/phrases', {
   submission = JSON.parse(request.body.read)
   phrase_text = submission['text']
 
-  error(400) if phrase_text.nil?
+  error(400) if phrase_text.nil? || phrase_text == ''
   error(400) if phrase_text.size > MAX_SUBMISSION_LENGTH
 
   id = Backend::Phrases.post(:negative, phrase_text)

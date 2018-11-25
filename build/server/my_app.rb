@@ -1,5 +1,7 @@
 require './lib/openapiing'
 
+MAX_SUBMISSION_LENGTH = 25
+
 # only need to extend if you want special configuration!
 class MyApp < OpenAPIing
   self.configure do |config|
