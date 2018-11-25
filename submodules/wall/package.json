@@ -16,7 +16,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "yarn trash dist && yarn parcel build app/*.html",
+    "build": "yarn trash dist && yarn parcel build --no-minify --public-url '/wall/' app/*.html",
     "serve": "yarn parcel serve app/*.html"
   }
 }
