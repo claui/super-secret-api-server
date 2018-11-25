@@ -1,4 +1,4 @@
-let URL = 'http://localhost:5101/api/kiosk/v1/negative/phrases'
+let URL = '/api/kiosk/v1/negative/phrases'
 
 window.submitPrediction = () => {
   let inputElement = window.document.forms[0].elements.prediction
