@@ -1,0 +1,101 @@
+input:focus {
+  outline: none;
+}
+
+body.happy {
+  background-color: white;
+}
+
+body.sad {
+  background-color: black;
+}
+
+input[type=button],
+input[type=submit],
+input[type=reset] {
+  border-radius: 100px;
+  color: #808080;
+  font-family:Futura;
+  font-weight: lighter;
+  font-size: 100%;
+  letter-spacing: 5px;
+  padding: 46px 22px 44px 26px;
+  text-decoration: none;
+  margin: 300px 0px 100px 0px;
+  cursor: pointer;
+}
+
+.happy input[type=button],
+.happy input[type=submit],
+.happy input[type=reset] {
+  background-color: #ffffff;
+  border: 1px solid black;
+}
+
+.sad input[type=button],
+.sad input[type=submit],
+.sad input[type=reset] {
+  background-color: #000000;
+  border: 1px solid white;
+}
+
+input[type=text] {
+  padding: 0px 0px;
+  margin: 0px 0px 0px 0px;
+  width: 22%;
+  height: 50px;
+  box-sizing: border-box;
+  font-family:Futura;
+  font-weight: lighter;
+  font-size: 200%;
+  text-transform: uppercase;
+  line-height: 110%;
+  letter-spacing: 5px;
+  border: none;
+}
+
+.happy input[type=text] {
+  background-color: #ffffff;
+  color: black;
+  border-bottom: 1px solid black;
+}
+
+.sad input[type=text] {
+  background-color: #000000;
+  color: white;
+  border-bottom: 1px solid white;
+}
+
+.happy input[type=button]:active {
+  background-color: #FFA9E2;
+  border: 1px solid #FFA9E2;
+  color: #808080;
+}
+
+.sad input[type=button]:active {
+  background-color: #7BFFF8;
+  border: 1px solid #7BFFF8;
+  color: #808080;
+}
+
+.alert {
+  visibility: hidden;
+  padding: 20px;
+  color: white;
+  color: #FF78AF;
+  font-family:Futura;
+  font-weight: lighter;
+  font-size: 100%;
+  text-transform: uppercase;
+  line-height: 110%;
+  letter-spacing: 5px;
+  width: 40vw;
+}
+
+.happy .alert {
+  background-color: #FFFFFF;
+}
+
+.sad .alert {
+  background-color: #000000;
+}
