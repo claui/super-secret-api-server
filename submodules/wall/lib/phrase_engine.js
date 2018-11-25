@@ -140,7 +140,8 @@ export default class PhraseEngine {
     let eligiblePhrases = userPhrases.length > 0 ?
       userPhrases : this.phrases
 
-    let randomIndex = Math.floor(eligiblePhrases * Math.random())
+    let randomIndex =
+      Math.floor(eligiblePhrases.length * Math.random())
     return eligiblePhrases[randomIndex]
   }
 }
