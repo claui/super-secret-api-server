@@ -1,14 +1,16 @@
 let URL = 'http://localhost:5101/api/kiosk/v1/negative/phrases'
 
 window.submitPrediction = () => {
-  let predictionText =
-    window.document.forms[0].elements.prediction.value
+  let inputElement = window.document.forms[0].elements.prediction
+
+  let predictionText = inputElement.value
   console.log(`Prediction entered: ${predictionText}`)
 
   let payload = JSON.stringify({ text: predictionText })
 
   let onPhraseSubmitted = (phrase) => {
-    console.log(`Phrase submitted: ${phrase}`)
+    console.log('Phrase submitted:')
+    console.debug(phrase)
   }
 
   console.log(`Submitting payload: ${payload}`)
@@ -20,6 +22,15 @@ window.submitPrediction = () => {
     },
     body: payload,
   }).then(response => {
+    let mistakeDiv = window.document.getElementById("mistake")
+
+    if (response.ok) {
+      mistakeDiv.style = 'visibility: hidden;'
+      predictionText.value = ''
+    } else {
+      mistakeDiv.style = 'visibility: visible;'
+    }
+
     console.debug(`Response: ${response}`)
     console.debug(`Response headers: ${response.headers}`)
     console.debug(`Response header: ${response.headers[0]}`)
