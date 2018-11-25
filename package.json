@@ -6,9 +6,11 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "generate-wall-server": ""
+    "build": "(cd submodules/wall && yarn install && yarn build) && yarn trash build/server/public/wall && mkdir -p build/server/public && mv -fv submodules/wall/dist build/server/public/wall && (cd build/server && rbenv exec bundle install)",
+    "serve": "cd build/server && rbenv exec bundle exec rackup -p 5101"
   },
   "devDependencies": {
-    "@harmowatch/openapi-generator-cli": "^0.0.3-3.3.3"
+    "@harmowatch/openapi-generator-cli": "^0.0.3-3.3.3",
+    "trash-cli": "^1.4.0"
   }
 }

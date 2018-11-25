@@ -42,17 +42,12 @@ To install the Google Cloud SDK, run:
 brew cask reinstall google-cloud-sdk
 ```
 
-## Preparing the server
+## Building the server
 
 After `cd`-ing to the project root, run the following Bash snippet:
 
 ```
-(
-  set -e
-
-  cd build/server
-  rbenv exec bundle install
-)
+yarn install && yarn build
 ```
 
 
@@ -63,12 +58,7 @@ After `cd`-ing to the project root, run the following Bash snippet:
 After `cd`-ing to the project root, run the following Bash snippet:
 
 ```
-(
-  set -e
-
-  cd build/server
-  rbenv exec bundle exec rackup -p 5101 config.ru
-)
+yarn serve
 ```
 
 ## Testing the server
