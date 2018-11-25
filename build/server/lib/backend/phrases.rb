@@ -24,7 +24,9 @@ module Backend
         .limit(PHRASE_QUERY_SOFT_LIMIT)
 
       phrases = datastore.run(query, namespace: namespace.to_s)
-      phrases.map { |entity| phrase_from(entity) }
+      phrases
+        .map { |entity| phrase_from(entity) }
+        .compact
     end
 
     def self.post(namespace, phrase_text)
@@ -66,10 +68,13 @@ module Backend
     end
 
     def self.phrase_from(entity)
-      expires = unless entity['expiration_time'].nil?
-        30 # FIXME
+      expires = if entity['expiration_time']
+        (Time.parse(entity['expiration_time']) - Time.now.utc).floor
       end
-      Model::Phrase.new(entity.key.id, entity['text'], expires)
+
+      if !expires || expires > 0
+        Model::Phrase.new(entity.key.id, entity['text'], expires)
+      end
     end
   end
 end
