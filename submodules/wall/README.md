@@ -16,7 +16,17 @@ Follow these steps to check out the development version:
 
 6. Run `yarn serve`.
 
-A browser window will open on `http://localhost:1234/`.
+Direct your browser to `http://localhost:1234/negative.html` or `http://localhost:1234/positive.html`.
+
+## Browser URLs
+
+- https://ted-merck-wall.appspot.com/wall/negative/
+
+- https://ted-merck-wall.appspot.com/wall/positive/
+
+- https://ted-merck-wall.appspot.com/kiosk/negative/
+
+- https://ted-merck-wall.appspot.com/kiosk/positive/
 
 ## Acknowledgements
 
