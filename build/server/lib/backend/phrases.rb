@@ -1,3 +1,4 @@
+require 'time'
 require 'digest/sha2'
 require 'google/cloud/datastore'
 
@@ -7,6 +8,7 @@ module Backend
   module Phrases
     PROJECT_ID = 'ted-merck-wall'
     PHRASE_QUERY_SOFT_LIMIT = 1000
+    PHRASE_TTL_SECONDS = 5 * 60
 
     ALLOWED_NAMESPACES = %i[negative positive].freeze
 
@@ -23,6 +25,24 @@ module Backend
 
       phrases = datastore.run(query, namespace: namespace.to_s)
       phrases.map { |entity| phrase_from(entity) }
+    end
+
+    def self.post(namespace, phrase_text)
+      validate_namespace!(namespace)
+
+      datastore = Google::Cloud::Datastore.new(
+        project_id: PROJECT_ID
+      )
+
+      phrase = datastore.entity(
+        'Phrase', namespace: namespace.to_s) do |entity|
+        entity['text'] = phrase_text
+        entity['expiration_time'] =
+          (Time.now.utc + PHRASE_TTL_SECONDS).xmlschema(3)
+      end
+
+      datastore.insert phrase
+      phrase.key.id
     end
 
     def self.get_by_id(namespace, id)

@@ -6,7 +6,7 @@
   "license": "UNLICENSED",
   "private": true,
   "scripts": {
-    "build": "(cd submodules/wall && yarn install && yarn build) && yarn trash build/server/public/wall && mkdir -p build/server/public && mv -fv submodules/wall/dist build/server/public/wall && (cd build/server && rbenv exec bundle install)",
+    "build": "(cd submodules/wall && yarn install && yarn build) && (cd submodules/kiosk && yarn install && yarn build) && yarn trash build/server/public/wall build/server/public/kiosk && mkdir -p build/server/public && mv -fv submodules/wall/dist build/server/public/wall && mv -fv submodules/kiosk/dist build/server/public/kiosk && (cd build/server && rbenv exec bundle install)",
     "serve": "cd build/server && rbenv exec bundle exec rackup -p 5101"
   },
   "devDependencies": {

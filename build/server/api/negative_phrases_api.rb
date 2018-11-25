@@ -2,12 +2,39 @@ require 'json'
 
 require './lib/backend'
 
+MAX_SUBMISSION_LENGTH = 25
+
+MyApp.add_route('POST', '/api/kiosk/v1/negative/phrases', {
+  "resourcePath" => "/NegativePhrases",
+  "summary" => "Creates a negative phrase",
+  "nickname" => "create_negative_phrase",
+  "responseClass" => "Phrase",
+  "endpoint" => "/negative/phrases",
+  "notes" => "Creates a negative phrase.",
+  "parameters" => [
+    ]}) do
+  cross_origin
+
+  request.body.rewind
+  submission = JSON.parse(request.body.read)
+  phrase_text = submission['text']
+
+  error(400) if phrase_text.nil?
+  error(400) if phrase_text.size > MAX_SUBMISSION_LENGTH
+
+  id = Backend::Phrases.post(:negative, phrase_text)
+  body({
+    "message" => "Stored in database",
+    "id" => id,
+  }.to_json)
+end
+
 MyApp.add_route('GET', '/api/wall/v1/negative/phrases/{id}', {
   "resourcePath" => "/NegativePhrases",
   "summary" => "Returns the negative phrase with the given ID",
-  "nickname" => "get_negative_phrase_by_id", 
+  "nickname" => "get_negative_phrase_by_id",
   "responseClass" => "Phrase",
-  "endpoint" => "/negative/phrases/{id}", 
+  "endpoint" => "/negative/phrases/{id}",
   "notes" => "",
   "parameters" => [
     {
@@ -37,9 +64,9 @@ end
 MyApp.add_route('GET', '/api/wall/v1/negative/phrases', {
   "resourcePath" => "/NegativePhrases",
   "summary" => "Returns a list of negative phrases",
-  "nickname" => "get_negative_phrases", 
+  "nickname" => "get_negative_phrases",
   "responseClass" => "Array<Phrase>",
-  "endpoint" => "/negative/phrases", 
+  "endpoint" => "/negative/phrases",
   "notes" => "Returns a list of negative phrases in no particular order.",
   "parameters" => [
     ]}) do
