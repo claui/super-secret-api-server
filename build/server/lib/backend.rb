@@ -101,7 +101,7 @@ module Backend
         Phrase.new(1042, "lol kann mer des sehen???", 11),
         Phrase.new(1050, "thx for coming to my ted talk lol", 19),
         Phrase.new(1051, "<script>alert('hi')</script>", 20),
-        Phrase.new(1057, "lolololololoolooololol", 30),
+        Phrase.new(8644406560390000, "lolololololoolooololol", 30),
       ]
     },
   ]
