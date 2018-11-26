@@ -13,18 +13,7 @@ MyApp.add_route('POST', '/api/kiosk/v1/positive/phrases', {
     ]}) do
   cross_origin
 
-  request.body.rewind
-  submission = JSON.parse(request.body.read)
-  phrase_text = submission['text']
-
-  error(400) if phrase_text.nil? || phrase_text == ''
-  error(400) if phrase_text.size > MAX_SUBMISSION_LENGTH
-
-  id = Backend::Phrases.post(:positive, phrase_text)
-  body({
-    "message" => "Stored in database",
-    "id" => id,
-  }.to_json)
+  error(405)
 end
 
 MyApp.add_route('GET', '/api/wall/v1/positive/phrases/{id}', {
