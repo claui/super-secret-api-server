@@ -1,5 +1,6 @@
-input:focus {
+  input:focus {
   outline: none;
+  -webkit-appearance: none;
 }
 
 body.happy {
@@ -23,6 +24,7 @@ input[type=reset] {
   text-decoration: none;
   margin: 300px 0px 100px 0px;
   cursor: pointer;
+  -webkit-appearance: none;
 }
 
 .happy input[type=button],
@@ -30,6 +32,7 @@ input[type=reset] {
 .happy input[type=reset] {
   background-color: #ffffff;
   border: 1px solid black;
+  -webkit-appearance: none;
 }
 
 .sad input[type=button],
@@ -37,12 +40,13 @@ input[type=reset] {
 .sad input[type=reset] {
   background-color: #000000;
   border: 1px solid white;
+  -webkit-appearance: none;
 }
 
 input[type=text] {
   padding: 0px 0px;
   margin: 0px 0px 0px 0px;
-  width: 22%;
+  width: 400px;
   height: 50px;
   box-sizing: border-box;
   font-family:Futura;
@@ -52,18 +56,22 @@ input[type=text] {
   line-height: 110%;
   letter-spacing: 5px;
   border: none;
+  -webkit-appearance: none;
+  -webkit-border-radius:0
 }
 
 .happy input[type=text] {
   background-color: #ffffff;
   color: black;
   border-bottom: 1px solid black;
+  -webkit-appearance: none;
 }
 
 .sad input[type=text] {
   background-color: #000000;
   color: white;
   border-bottom: 1px solid white;
+  -webkit-appearance: none;
 }
 
 .happy input[type=button]:active {
