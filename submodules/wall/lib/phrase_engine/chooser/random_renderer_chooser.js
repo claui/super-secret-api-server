@@ -1,4 +1,4 @@
-export class RandomRendererChooser {
+export default class RandomRendererChooser {
   constructor (renderers) {
     var index = 0
 

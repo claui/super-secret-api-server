@@ -1,2 +1,4 @@
-export * from './chooser/random-renderer-chooser.js'
-export * from './chooser/solo-renderer-chooser.js'
+import RandomRendererChooser from './chooser/random_renderer_chooser.js'
+import SoloRendererChooser from './chooser/solo_renderer_chooser.js'
+
+export { RandomRendererChooser, SoloRendererChooser }

@@ -1,4 +1,4 @@
-export class SoloRendererChooser {
+export default class SoloRendererChooser {
   constructor (soloRenderer) {
     this.soloRenderer = soloRenderer
   }
