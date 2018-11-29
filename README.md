@@ -11,6 +11,7 @@ The following packages need to be installed before you can work on the server:
 
 - Ruby
 - Bundler
+- jq
 - Node.js
 - Yarn
 - Google Cloud SDK
@@ -29,10 +30,10 @@ To install Ruby and Bundler, run the following Bash snippet:
 )
 ```
 
-To install Node.js and Yarn, run:
+To install jq, Node.js, and Yarn, run:
 
 ```
-brew reinstall node yarn
+brew reinstall jq node yarn
 ```
 
 To install the Google Cloud SDK, run:
@@ -164,5 +165,23 @@ Kiosk:
 
   bundle config --local allow_offline_install true
   bundle config --local path vendor/bundle
+)
+```
+
+## Exporting all phrases
+
+To export all phrases from a running instance, run the following Bash snippet:
+
+```
+(
+  set -eu
+  API_HOST='https://ted-merck-wall.appspot.com'
+  TARGET_DIR='api-dumped'
+
+  for namespace in negative positive; do
+    mkdir -p "${TARGET_DIR}/wall/v1/${namespace}"
+    curl -sS "${API_HOST}/api/wall/v1/${namespace}/phrases" \
+      | jq . > "${TARGET_DIR}/wall/v1/${namespace}/phrases.json"
+  done
 )
 ```
