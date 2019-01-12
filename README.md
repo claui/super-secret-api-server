@@ -65,6 +65,14 @@ yarn serve
 
 ## Testing the server
 
+For a basic health check, run:
+
+```
+curl 'http://localhost:5101/resources.json'
+```
+
+If the GCP backend (see section _Deploying to GCP_) is online, you can test the API as follows:
+
 ```
 curl 'http://localhost:5101/api/wall/v1/negative/phrases'
 ```
