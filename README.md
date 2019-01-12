@@ -26,7 +26,9 @@ To install Ruby and Bundler, run the following Bash snippet:
 
   brew reinstall rbenv
   rbenv install 2.5.3
-  RBENV_VERSION=2.5.3 rbenv exec gem install bundler
+  rbenv shell 2.5.3
+  rbenv exec gem update --system
+  rbenv exec gem install bundler
 )
 ```
 
