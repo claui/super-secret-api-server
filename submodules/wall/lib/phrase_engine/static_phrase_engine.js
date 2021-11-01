@@ -1,5 +1,9 @@
 import AbstractPhraseEngine from './abstract_phrase_engine'
 
+/**
+ * A StaticPhraseEngine keeps a list of immutable phrases
+ * and has no support for expiration dates.
+ */
 export default class StaticPhraseEngine extends AbstractPhraseEngine {
   constructor (config) {
     super(config)

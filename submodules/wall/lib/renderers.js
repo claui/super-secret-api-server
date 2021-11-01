@@ -1,8 +1,21 @@
 /*
- * The `renderers` array registers each renderer with the app.
+ * A renderer is a class whose objects are responsible for the
+ * animation lifecycle of a phrase.
+ * It gets instantiated with a phrase whose properties are named
+ * `id` and `text`.
+ * The duties of a renderer object are:
+ * 1. to create a DOM object that represents the phrase visually,
+ * 2. animate the phrase, and
+ * 3. after the animation is over, remove it from the DOM.
  *
- * For a renderer to be registered, the `renderers` array
- * must contain one descriptor per renderer. A descriptor has two
+ * The DOM object needs to have the ID `phrase_${id}`.
+ * That convention allows the phrase engine to ask the DOM whether
+ * a given phrase is currently being displayed.
+ *
+ * The `renderers` array registers each renderer class with the app.
+ *
+ * For a renderer class to be registered, the `renderers` array
+ * must contain a descriptor for the class. A descriptor has two
  * mandatory properties named `plugin` and `weight`, and another
  * (optional) property named `solo`.
  *

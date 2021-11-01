@@ -7,6 +7,23 @@ const FALLBACK_PHRASE = {
   text: '\u26a0Check connectivity',
 }
 
+/**
+ * In addition to the duties an AbstractPhraseEngine provides,
+ * a LivePhraseEngine periodically does the following things:
+ *
+ * - query the backend for updated phrases,
+ * - update the list of phrases and its expiration timers,
+ * - remove expired phrases from the list of phrases, and
+ * - remove phrases from the list of phrases that no longer
+ *   exist in the backend.
+ *
+ * A phrase expires when its expiration timer reaches zero seconds.
+ * That means it can no longer be picked by the phrase engine.
+ *
+ * The phrase engine purges the list of phrases regularly in order
+ * to get rid of expired phrases or phrases that no longer exist
+ * in the backend.
+ */
 export default class LivePhraseEngine extends AbstractPhraseEngine {
   constructor (config) {
     super(config)

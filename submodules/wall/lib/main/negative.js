@@ -16,7 +16,7 @@ import renderers from '../renderers.js'
  *     new LivePhraseEngine({ sourceUrl, renderers }).run()
  */
 
-let sourceUrl = '/api/wall/v1/negative/phrases'
-new LivePhraseEngine({ sourceUrl, renderers }).run()
+import phrases from '../../api-dumped/wall/v1/negative/phrases.json'
+new StaticPhraseEngine({ phrases, renderers }).run()
 
 bars.animate()

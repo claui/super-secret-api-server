@@ -3,6 +3,17 @@ import { RandomRendererChooser, SoloRendererChooser }
 
 const DEFAULT_CHOOSE_PHRASE_EVERY_MS = 5000
 
+/**
+ * A phrase engine is responsible for the following tasks:
+ *
+ * - keeping an array of phrases,
+ * - picking a random eligible phrase,
+ * - picking a renderer class for the phrase, and
+ * - spawning a renderer object for the phrase.
+ *
+ * A phrase is eligible for being randomly picked unless it
+ * has expired or is already being displayed.
+ */
 export default class AbstractPhraseEngine {
   constructor (config) {
     this.choosePhraseEveryMs = config.choosePhraseEveryMs
