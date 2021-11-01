@@ -17,7 +17,7 @@ input[type=reset] {
   border-radius: 100px;
   color: #808080;
   font-family:Futura;
-  font-weight: lighter;
+  font-weight: 200;
   font-size: 100%;
   letter-spacing: 5px;
   padding: 46px 22px 44px 26px;
@@ -50,7 +50,7 @@ input[type=text] {
   height: 50px;
   box-sizing: border-box;
   font-family:Futura;
-  font-weight: lighter;
+  font-weight: 200;
   font-size: 200%;
   text-transform: uppercase;
   line-height: 110%;
@@ -92,7 +92,7 @@ input[type=text] {
   color: white;
   color: #FF78AF;
   font-family:Futura;
-  font-weight: lighter;
+  font-weight: 200;
   font-size: 100%;
   text-transform: uppercase;
   line-height: 110%;
