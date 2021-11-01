@@ -7,41 +7,70 @@ This repository contains the API server, which powers the LED Wall.
 
 ## Installing required software
 
-The following packages need to be installed before you can work on the server:
+Follow these steps to check out the development version:
 
-- Ruby
-- Bundler
-- jq
-- Node.js
-- Yarn
-- Google Cloud SDK
+1. Install [Homebrew](https://brew.sh/).
 
-On macOS, the above requirements can be met using Homebrew.
+2. Install nvm, jq, rbenv, ruby-build, and Yarn:
 
-To install Ruby and Bundler, run the following Bash snippet:
+    ```
+    brew reinstall nvm jq rbenv ruby-build yarn
+    ```
 
-```
-(
-  set -ex
+3. Follow the instructions printed by the preceding step. That
+   makes sure that the `nvm` and `rbenv` command are available
+   in your shell.
 
-  brew reinstall rbenv
-  rbenv install 2.7.4
-  export RBENV_VERSION=2.7.4
-  rbenv exec gem update -N --system
-)
-```
+4. Install the Google Cloud SDK:
 
-To install jq, Node.js, and Yarn, run:
+    ```
+    brew reinstall google-cloud-sdk
+    ```
 
-```
-brew reinstall jq node yarn
-```
+5. Install Ruby and Bundler:
 
-To install the Google Cloud SDK, run:
+    ```
+    (
+      set -ex
 
-```
-brew cask reinstall google-cloud-sdk
-```
+      rbenv install -v 2.7.4
+      export RBENV_VERSION=2.7.4
+      rbenv exec gem update -N --system
+    )
+    ```
+
+6. Clone this repository:
+
+    ```
+    git clone https://github.com/GwennyGreen/super-secret-api-server.git
+    ```
+
+7. `cd` into the `build/server` directory, then run:
+
+    ```
+    (
+      set -ex
+
+      gem install bundler:2.2.30
+      rbenv rehash
+      bundle install
+    )
+    ```
+
+8. `cd` into the project root directory.
+
+9. Install the latest LTS release of Node.js 10 (aka Dubnium):
+
+    ```
+    nvm install
+    ```
+
+10. Instruct NVM to prepend the proper Node.js version to your `PATH`:
+
+    ```
+    nvm use
+    ```
+
 
 ## Building the server
 
