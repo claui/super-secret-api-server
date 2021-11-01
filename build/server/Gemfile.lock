@@ -94,4 +94,4 @@ DEPENDENCIES
   sinatra-cross_origin
 
 BUNDLED WITH
-   1.17.1
+   2.2.30
