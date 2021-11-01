@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "editorconfig.editorconfig",
+        "formulahendry.code-runner",
+        "rebornix.ruby",
+        "redhat.vscode-yaml"
+    ]
+}
