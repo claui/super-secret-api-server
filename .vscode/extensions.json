@@ -2,7 +2,7 @@
     "recommendations": [
         "editorconfig.editorconfig",
         "formulahendry.code-runner",
-        "rebornix.ruby",
-        "redhat.vscode-yaml"
+        "redhat.vscode-yaml",
+        "shopify.ruby-lsp"
     ]
 }
