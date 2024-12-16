@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'google-cloud-datastore', '~> 1.4'
 gem 'rack-rewrite', '~> 1.5'
-gem 'sinatra', '~> 2.0'
+gem 'puma', '~> 5.6'
+gem 'sinatra', '~> 3.0'
 gem 'sinatra-cross_origin'
+gem 'sqlite3', '~> 1.4'

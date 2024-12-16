@@ -33,8 +33,8 @@ Follow these steps to check out the development version:
     (
       set -ex
 
-      rbenv install -v 2.7.4
-      export RBENV_VERSION=2.7.4
+      rbenv install -v 3.1.6
+      export RBENV_VERSION=3.1.6
       rbenv exec gem update -N --system
     )
     ```
@@ -51,7 +51,7 @@ Follow these steps to check out the development version:
     (
       set -ex
 
-      gem install bundler:2.2.30
+      gem install bundler
       rbenv rehash
       bundle install
     )
