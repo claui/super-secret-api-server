@@ -6,7 +6,7 @@
 # sudo chmod 775 /var/lib/led-wall
 # sudo chgrp "$(id -g)" /var/lib/led-wall
 # rm -f /var/lib/led-wall/db.sqlite3
-# bundle exec contrib/db_init.rb
+# bundle exec contrib/db/db_init.rb
 
 require "sqlite3"
 

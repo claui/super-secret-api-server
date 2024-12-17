@@ -1,8 +1,9 @@
 {
-    "recommendations": [
-        "editorconfig.editorconfig",
-        "formulahendry.code-runner",
-        "redhat.vscode-yaml",
-        "shopify.ruby-lsp"
-    ]
+  "recommendations": [
+    "coolbear.systemd-unit-file",
+    "editorconfig.editorconfig",
+    "formulahendry.code-runner",
+    "redhat.vscode-yaml",
+    "shopify.ruby-lsp"
+  ]
 }

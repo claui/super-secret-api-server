@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rack-rewrite', '~> 1.5'
 gem 'puma', '~> 5.6'
+gem 'sd_notify', '~> 0.1.1'
 gem 'sinatra', '~> 3.0'
 gem 'sinatra-cross_origin'
 gem 'sqlite3', '~> 1.4'

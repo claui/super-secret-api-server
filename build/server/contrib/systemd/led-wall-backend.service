@@ -1,0 +1,15 @@
+[Unit]
+Description=TED@Merck LED wall backend
+After=network.target nss-lookup.target
+
+[Service]
+Type=notify
+WatchdogSec=30
+ExecStart=/usr/bin/bundle exec rackup --env production --port 5101 --server puma
+WorkingDirectory=/opt/super-secret-api-server/build/server
+RuntimeDirectory=%p
+User=led-wall
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target
